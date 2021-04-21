@@ -1,0 +1,23 @@
+.posts{
+	padding: 10px;
+}
+
+textarea, button {
+	margin-left: 10px;
+	border-radius: 4px;
+	outline: none;
+	border: none;
+	
+}
+textarea{
+	font-size: 18px;
+	padding: 5px;
+}
+
+button {
+	position: relative;
+	bottom: 10px;
+	width: 70px;
+	height: 26px;
+	font-size: 14px;
+}
