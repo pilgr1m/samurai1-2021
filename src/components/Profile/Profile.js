@@ -1,22 +1,17 @@
 import React from 'react'
 import MyPosts from './MyPosts/MyPosts'
-import style from "./Profile.module.css"
+import ProfileInfo from './ProfileInfo/ProfileInfo'
+
+// import style from "./Profile.module.css"
 
 
-const Profile = () => {
+const Profile = (props) => {
+
 	return (
 		<>
-			<div>
-				<img className={style.bigImage} src="https://wallpapershome.ru/images/pages/pic_h/6505.jpg" alt="imagee" />
-			</div>
-
-			<div>
-				ava+description
-				</div>
-
-			<MyPosts />
+			<ProfileInfo />
+			<MyPosts posts={props.state.posts} />
 		</>
 	)
 }
-
 export default Profile

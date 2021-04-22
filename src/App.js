@@ -3,20 +3,26 @@ import Navbar from "./components/Navbar/Navbar"
 import Profile from "./components/Profile/Profile"
 import Dialogs from "./components/Dialogs/Dialogs"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import News from "./components/News/News"
 import './App.css'
 
-const App = () => {
+
+const App = (props) => {
+
 	return (
 		<Router>
 			<div className="app-wrapper">
 				<Header />
 				<Navbar />
 				<div className="content">
-					<Route exact path="/dialogs" component={Dialogs} />
-					<Route exact path="/profile" component={Profile} />
-					<Route exact path="/news" component={News} />
-					<Route exact path="/" component={Profile} />
+
+					<Route path="/dialogs" >
+						<Dialogs state={props.state.dialogsPage} />
+					</Route>
+
+					<Route path="/profile" >
+						<Profile state={props.state.profilePage} />
+					</Route>
+
 				</div>
 
 				{/* <Switch>

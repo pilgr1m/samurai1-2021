@@ -1,22 +1,23 @@
 import React from 'react'
-
-import avatar from "../../images/avatar.png"
-import style from "./MyPosts.module.css"
 import Post from './Post/Post'
 
+import style from "./MyPosts.module.css"
 
-const MyPosts = () => {
+
+const MyPosts = (props) => {
+
+	let postsItems = props.posts.map(p => <Post key={p.id} message={p.post} likes={p.likes} />)
+
 	return (
-		<div>
-			My Posts
+		<div className={style.myPostsWrapper}>
+			<h3>My Posts</h3>
 			<div>
 				<textarea></textarea>
 				<button>Add post</button>
 			</div>
+
 			<div className={style.posts}>
-				<Post message="Hello, dude!" likes="5" />
-				<Post message="Hi" likes="1" />
-				<Post message="How are you?" likes="10" />
+				{postsItems}
 			</div>
 		</div>
 	)

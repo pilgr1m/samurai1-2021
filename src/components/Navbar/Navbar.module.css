@@ -3,9 +3,6 @@
 	background-color: rgb(113, 121, 113);
 	padding: 10px;
 }
-.nav a {
-	text-decoration: none;
-}
 
 .item a {
 	color: white;
@@ -13,7 +10,7 @@
 	text-decoration: none;
 }
 
-.activeLink {
-	color: rgb(139, 102, 1);
+.item a.activeLink {
+	color: rgb(255, 204, 65);
 	font-size: 22px;
 }

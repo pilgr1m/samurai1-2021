@@ -1,3 +1,10 @@
+.myPostsWrapper{
+	padding: 10px;
+}
+h3{
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
 .posts{
 	padding: 10px;
 }
