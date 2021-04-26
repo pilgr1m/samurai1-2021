@@ -2,30 +2,36 @@ import Header from "./components/Header/Header"
 import Navbar from "./components/Navbar/Navbar"
 import Profile from "./components/Profile/Profile"
 import Dialogs from "./components/Dialogs/Dialogs"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 import './App.css'
 
 
 const App = (props) => {
 
 	return (
-		<Router>
-			<div className="app-wrapper">
-				<Header />
-				<Navbar />
-				<div className="content">
+		<div className="app-wrapper">
+			<Header />
+			<Navbar />
+			<div className="content">
 
-					<Route path="/dialogs" >
-						<Dialogs state={props.state.dialogsPage} />
-					</Route>
+				<Route path="/profile" >
+					<Profile
+						profilePage={props.state.profilePage}
+						dispatch={props.dispatch}
+					/>
+				</Route>
 
-					<Route path="/profile" >
-						<Profile state={props.state.profilePage} />
-					</Route>
+				<Route path="/dialogs" >
+					<Dialogs
+						dialogsPage={props.state.dialogsPage}
+						dispatch={props.dispatch}
+					/>
+				</Route>
 
-				</div>
 
-				{/* <Switch>
+			</div>
+
+			{/* <Switch>
 					<Route path="/dialogs">
 						<Dialogs />
 					</Route>
@@ -36,10 +42,7 @@ const App = (props) => {
 						<News />
 					</Route>
 				</Switch> */}
-
-			</div>
-		</Router>
-
+		</div>
 	)
 }
 export default App

@@ -21,3 +21,13 @@
 .messages .message{
 
 }
+
+.textWrapper{
+    margin-top: 10px;
+}
+.textWrapper textarea{
+    margin: 10px 0 0 0px;
+}
+.textWrapper button{
+    margin: 12px 0 0 0px;
+}
