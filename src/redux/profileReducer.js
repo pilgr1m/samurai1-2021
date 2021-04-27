@@ -6,11 +6,10 @@ let initialState = {
         { id: 1, post: "Hello, friend", likes: 5 },
         { id: 2, post: "Hi, dude!", likes: 7 },
     ],
-    newPostText: "ivan react developer"
+    newPostText: "prof reducer"
 }
 
 export const profileReducer = (state = initialState, action) => {
-    // debugger
     switch (action.type) {
         case ADD_POST:
             let id = state.posts.length + 1

@@ -1,23 +1,21 @@
 import React from 'react'
 import Post from './Post/Post'
-import { addPostAC, updateNewPostAC } from '../../../redux/profileReducer'
 
 import style from "./MyPosts.module.css"
 
 
 const MyPosts = (props) => {
-	// console.log("myposts: ", props)
 	let postsItems = props.posts.map(p => <Post key={p.id} message={p.post} likes={p.likes} />)
 
 	const newPostElem = React.createRef()
 
-	let addPost = () => {
-		props.dispatch(addPostAC())
+	let onAddPost = () => {
+		props.addPost()
 	}
 
 	let onPostChange = () => {
 		let text = newPostElem.current.value
-		props.dispatch(updateNewPostAC(text))
+		props.updateNewPostText(text)
 	}
 
 	return (
@@ -29,7 +27,7 @@ const MyPosts = (props) => {
 					value={props.newPostText}
 					onChange={onPostChange}
 				/>
-				<button onClick={addPost}>Add post</button>
+				<button onClick={onAddPost}>Add post</button>
 			</div>
 
 			<div className={style.posts}>

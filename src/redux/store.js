@@ -8,7 +8,7 @@ let store = {
                 { id: 1, post: "Hello, friend", likes: 5 },
                 { id: 2, post: "Hi, dude!", likes: 7 },
             ],
-            newPostText: "ivan react developer"
+            newPostText: "old store"
         },
 
         dialogsPage: {

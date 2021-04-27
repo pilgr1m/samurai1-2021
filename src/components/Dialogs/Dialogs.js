@@ -3,7 +3,6 @@ import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
 
 import style from "./Dialogs.module.css"
-import { sendMessageAC, updateNewMessageAC } from '../../redux/dialogsReducer'
 
 
 const Dialogs = (props) => {
@@ -15,11 +14,11 @@ const Dialogs = (props) => {
     })
 
     const addMessage = () => {
-        props.dispatch(sendMessageAC())
+        props.sendMessage()
     }
     const onMessageChange = (event) => {
         let message = event.target.value
-        props.dispatch(updateNewMessageAC(message))
+        props.updateNewMessage(message)
     }
 
     return (
@@ -34,7 +33,6 @@ const Dialogs = (props) => {
             </div>
 
             <div className={style.textWrapper}>
-
                 <div>
                     <textarea
                         placeholder="enter message"
@@ -50,7 +48,6 @@ const Dialogs = (props) => {
                     </button>
                 </div>
             </div>
-
         </div>
     )
 }
