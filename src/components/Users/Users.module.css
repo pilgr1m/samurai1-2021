@@ -1,0 +1,28 @@
+.usersBlock{
+    padding: 10px;
+}
+.usersWrapper{
+    display: flex;
+    margin-top: 10px;
+}
+.photo{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.btn{
+    font-weight: 700;
+    cursor: pointer;
+}
+.right {
+    padding-left: 10px;
+}
+.spanLeft{
+    font-size: 14px;
+}
+.spanRight{
+    color: #fff;
+    letter-spacing: 0.3px;
+}
+
+

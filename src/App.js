@@ -2,6 +2,7 @@ import Header from "./components/Header/Header"
 import Navbar from "./components/Navbar/Navbar"
 import Profile from "./components/Profile/Profile"
 import DialogsContainer from "./components/Dialogs/DialogsContainer"
+import UsersContainer from "./components/Users/UsersContainer"
 import { Route, Switch } from "react-router-dom"
 
 import './App.css'
@@ -21,6 +22,10 @@ const App = (props) => {
 
 				<Route path="/dialogs" >
 					<DialogsContainer />
+				</Route>
+
+				<Route path="/users" >
+					<UsersContainer />
 				</Route>
 
 			</div>

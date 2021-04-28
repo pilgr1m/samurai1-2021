@@ -18,6 +18,12 @@ const Navbar = () => {
                 </NavLink>
             </div>
 
+            <div className={style.item}>
+                <NavLink to="/users" activeClassName={style.activeLink}>
+                    Users
+                </NavLink>
+            </div>
+
         </nav>
     )
 }

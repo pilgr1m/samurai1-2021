@@ -6,27 +6,27 @@ let initialState = {
         { id: 1, post: "Hello, friend", likes: 5 },
         { id: 2, post: "Hi, dude!", likes: 7 },
     ],
-    newPostText: "prof reducer"
+    newPostText: "don't stop!"
 }
 
 export const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
-            let id = state.posts.length + 1
+        case ADD_POST: {
             let newPost = {
-                id: id,
+                id: state.posts.length + 1,
                 post: state.newPostText,
                 likes: 0
             }
-            state.posts.push(newPost)
-            state.newPostText = ""
+            return {
+                ...state,
+                newPostText: "",
+                posts: [...state.posts, newPost]
+            }
+        }
 
-            return state
-
-        case UPDATE_NEW_POST:
-            state.newPostText = action.newText
-
-            return state
+        case UPDATE_NEW_POST: {
+            return { ...state, newPostText: action.newText }
+        }
 
         default: return state
     }

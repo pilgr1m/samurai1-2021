@@ -6,24 +6,19 @@ import App from './App'
 import store from './redux/reduxStore'
 
 
-let rerenderEntireTree = (state) => {
-    ReactDOM.render(
-        <React.StrictMode>
-            <Router >
 
-                <Provider store={store}>
-                    <App />
-                </Provider>
+ReactDOM.render(
+    <React.StrictMode>
+        <Router >
 
-            </Router>
-        </React.StrictMode>,
-        document.getElementById('root')
-    )
-}
-rerenderEntireTree(store.getState())
+            <Provider store={store}>
+                <App />
+            </Provider>
 
-store.subscribe(() => {
-    let state = store.getState()
-    rerenderEntireTree(state)
-})
+        </Router>
+    </React.StrictMode>,
+    document.getElementById('root')
+)
+
+
 
