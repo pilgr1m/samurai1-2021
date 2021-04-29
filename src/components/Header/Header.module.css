@@ -2,4 +2,15 @@
 	grid-area: h;
 	background-color: rgb(113, 121, 113);
 	padding: 10px;
+	/* color: rgb(253, 236, 0); */
+	color: rgb(33, 189, 41);
+	font-weight: 700;
+	font-size: 20px;
+
+}
+.spanHeader{
+	font-size: 16px;
+	font-weight: 700;
+	/* color: rgb(33, 189, 41); */
+	color: rgb(253, 236, 0);
 }

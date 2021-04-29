@@ -1,28 +1,74 @@
 .usersBlock{
     padding: 10px;
 }
-.usersWrapper{
-    display: flex;
-    margin-top: 10px;
+.usersBlock .totalCount{
+    display: block;
+    border-bottom: 1px solid rgb(2, 2, 2,0.3);
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 6px;
+    box-sizing: border-box;
+    width: 140px;
 }
-.photo{
+.usersBlock .totalCount .count{
+   background-color: rgba(253, 236, 0);
+   border-radius: 4px;
+   font-size: 14px;
+   font-weight: 500;
+   padding: 0px;
+}
+.usersBlock .pagination {
+    font-size: 15px;
+    margin-bottom: 6px;
+
+}
+.selectedPage {
+    font-size: 18px;
+    color: rgb(253, 236, 0);
+    font-weight: 500;
+}
+
+/* .usersBlock .btnGetUsers{
+    background-color: rgb(33, 189, 41);
+    color: #fff;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100px;
+    height: 30px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+} */
+
+.userWrapper{
+    display: flex;
+}
+.userWrapper .photo{
     width: 70px;
     height: 70px;
     border-radius: 50%;
 }
-.btn{
-    font-weight: 700;
+.userWrapper .btn{
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
+    background-color: rgb(253, 236, 0);
 }
-.right {
+.userWrapper .right {
     padding-left: 10px;
 }
-.spanLeft{
+
+.userWrapper .spanLeft{
     font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.5px;
 }
-.spanRight{
-    color: #fff;
-    letter-spacing: 0.3px;
+.userWrapper .spanRight{
+    color: rgb(253, 236, 0);
+    letter-spacing: 0.5px;
+    font-size: 15px;
 }
+
 
 
