@@ -9,12 +9,7 @@ const Profile = (props) => {
 
 	return (
 		<>
-			<ProfileInfo />
-			{/* <MyPostsContainer
-				posts={props.profilePage.posts}
-				dispatch={props.dispatch}
-				newPostText={props.profilePage.newPostText}
-			/> */}
+			<ProfileInfo profile={props.profile} />
 			<MyPostsContainer />
 		</>
 	)
