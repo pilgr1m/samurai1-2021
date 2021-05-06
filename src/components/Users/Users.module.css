@@ -54,6 +54,10 @@
     font-weight: 500;
     cursor: pointer;
     background-color: rgb(253, 236, 0);
+    /* background-color: rgb(253, 59, 0); */
+}
+.userWrapper .btn:disabled{
+    background-color: rgba(253, 236, 0, 0.288);
 }
 .userWrapper .right {
     padding-left: 10px;

@@ -1,4 +1,4 @@
-import Header from "./components/Header/Header"
+import HeaderContainer from "./components/Header/HeaderContainer"
 import Navbar from "./components/Navbar/Navbar"
 import DialogsContainer from "./components/Dialogs/DialogsContainer"
 import ProfileContainer from "./components/Profile/ProfileContainer"
@@ -9,15 +9,16 @@ import './App.css'
 
 
 
+
 const App = (props) => {
 
 	return (
 		<div className="app-wrapper">
-			<Header />
+			<HeaderContainer />
 			<Navbar />
 			<div className="content">
 
-				<Route path="/profile" >
+				<Route path="/profile/:userId?" >
 					<ProfileContainer />
 				</Route>
 
