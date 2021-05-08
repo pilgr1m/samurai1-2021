@@ -13,20 +13,20 @@ export const usersAPI = {
 	getUsers(currentPage = 1, pageSize = 5) {
 		return instance.get(`users?page=${currentPage}&count=${pageSize}`)
 			.then(response => response.data)
-	}
-
-
-}
-
-export const followAPI = {
+	},
+	follow(id) {
+		return instance.post(`follow/${id}`)
+	},
 	unfollow(id) {
-		return instance.get(`follow/${id}`)
+		return instance.delete(`follow/${id}`)
+	},
+	getProfile(userId) {
+		return instance.get(`profile/${userId}`)
 	}
-
-
 }
 
-
-// export const getUsers = (currentPage = 1, pageSize = 5) => {
-// 	return axios.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
-// }
+export const authAPI = {
+	me() {
+		return instance.get(`auth/me`)
+	}
+}

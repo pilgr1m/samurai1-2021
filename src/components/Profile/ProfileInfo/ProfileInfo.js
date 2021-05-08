@@ -3,6 +3,7 @@ import ava from '../../images/ava.png'
 import Preloader from "../../common/Preloader"
 
 const ProfileInfo = ({ profile }) => {
+    console.log(profile)
     if (!profile) {
         return <Preloader />
     }
@@ -18,7 +19,7 @@ const ProfileInfo = ({ profile }) => {
                     className={style.ava}
                     src={profile.photos ? profile.photos.small : ava}
                     alt="ava" />
-                <div className={style.name}>{profile.fullName}</div>
+                <div className={style.name}>{profile.fullName}(id:{profile.userId})</div>
                 <div className={style.aboutMe}>About me: "{profile.aboutMe}"</div>
                 <div className={style.job}>Looking for a job: "{profile.lookingForAJobDescription}"</div>
                 <div className={style.contacts}><span className={style.con}>Contacts:</span>
