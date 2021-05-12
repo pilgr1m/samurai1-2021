@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { setCurrentPage, toggleFollowProgress, getUsers, unfollow, follow } from '../../redux/usersReducer'
 import Users from './Users'
 import Preloader from '../common/Preloader'
+import { compose } from 'redux'
 
 
 class UsersContainer extends React.Component {

@@ -6,6 +6,7 @@ import UsersContainer from "./components/Users/UsersContainer"
 import { Route, Switch } from "react-router-dom"
 
 import './App.css'
+import Login from "./components/Login/Login"
 
 
 
@@ -28,6 +29,10 @@ const App = (props) => {
 
 				<Route path="/users" >
 					<UsersContainer />
+				</Route>
+
+				<Route path="/login" >
+					<Login />
 				</Route>
 
 			</div>

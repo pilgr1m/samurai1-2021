@@ -3,6 +3,7 @@ import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
 
 import style from "./Dialogs.module.css"
+import { Redirect } from 'react-router-dom'
 
 
 const Dialogs = (props) => {
