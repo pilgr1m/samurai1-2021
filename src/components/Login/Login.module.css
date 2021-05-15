@@ -1,0 +1,26 @@
+.loginWrapper {
+    padding: 5px;
+    width: 200px;
+}
+.inputLogin,
+.inputPass{
+    width: 190px;
+    height: 24px;
+    border-radius: 2px;
+    border:none;
+    outline: none;
+    padding: 2px 5px 2px;
+    margin-bottom: 4px;
+}
+.divCheckbox{
+    font-size: 14px;
+    color: #fff;
+}
+.inputCheckbox{
+    margin-bottom: 14px;
+}
+.btn{
+    background-color: rgb(253, 236, 0);
+    float: right;
+    font-weight: 500;
+}
