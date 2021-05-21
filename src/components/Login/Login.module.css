@@ -20,7 +20,17 @@
     margin-bottom: 14px;
 }
 .btn{
+    width: 50px;
+    height: 24px;
     background-color: rgb(253, 236, 0);
     float: right;
     font-weight: 500;
+    margin-bottom: 10px;
 }
+
+.formError {
+    color: rgb(255, 70, 70);
+    font-weight: 500;
+    font-size: 13px;
+}
+

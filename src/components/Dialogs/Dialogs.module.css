@@ -30,6 +30,12 @@
 .textWrapper textarea{
     margin: 10px 0 0 0px;
 }
-.textWrapper button{
+.btnDialog{
+    width: 50px;
+    height: 24px;
+    font-size: 14px;
     margin: 12px 0 0 0px;
+    background-color: rgb(253, 236, 0);
+	cursor: pointer;
+	font-weight: 500;
 }

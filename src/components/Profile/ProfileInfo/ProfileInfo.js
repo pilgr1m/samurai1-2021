@@ -4,6 +4,7 @@ import Preloader from "../../common/Preloader"
 import ProfileStatus from "./ProfileStatus"
 
 const ProfileInfo = ({ profile, status, updateStatus }) => {
+	// debugger
 	if (!profile) {
 		return <Preloader />
 	}

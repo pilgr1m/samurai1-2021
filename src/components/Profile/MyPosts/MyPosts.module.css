@@ -21,10 +21,10 @@ textarea{
 	padding: 5px;
 }
 
-button {
-	position: relative;
-	bottom: 10px;
-	width: 70px;
+.btnPost {
 	height: 26px;
 	font-size: 14px;
+	background-color: rgb(253, 236, 0);
+	cursor: pointer;
+	font-weight: 500;
 }

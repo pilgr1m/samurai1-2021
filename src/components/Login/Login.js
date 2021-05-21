@@ -1,23 +1,54 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
+import { login } from '../../redux/authReducer'
+import { Input } from '../common/FormControls'
+import { required } from '../utils/validator'
 
 import style from "./Login.module.css"
 
-let LoginForm = (props) => {
 
+let LoginForm = (props) => {
     const { handleSubmit } = props
     return (
         <form onSubmit={handleSubmit}>
             <div >
-                <Field className={style.inputLogin} placeholder="login" name="login" component="input" type="text" />
+                <Field
+                    validate={[required]}
+                    className={style.inputLogin}
+                    placeholder="email"
+                    name="email"
+                    component={Input}
+                    type="text"
+                />
             </div>
             <div>
-                <Field className={style.inputPass} placeholder="password" name="password" component="input" type="text" />
+                <Field
+                    validate={[required]}
+                    className={style.inputPass} placeholder="password"
+                    name="password"
+                    component={Input}
+                    type="password"
+                />
             </div>
             <div className={style.divCheckbox} >
-                <Field className={style.inputCheckbox} name="rememberMe" component="input" type="checkbox" />
+                <Field
+                    className={style.inputCheckbox}
+                    name="rememberMe"
+                    component="input"
+                    type="checkbox"
+                />
                 remember me
             </div>
+
+            {props.error
+                ? <div className={style.formError}>
+                    {props.error}
+                </div>
+                : null
+            }
+
             <div >
                 <button className={style.btn}> Login</button>
             </div>
@@ -30,7 +61,11 @@ const LoginReduxForm = reduxForm({ form: "login" })(LoginForm)
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData)
+        // console.log(formData)
+        props.login(formData.email, formData.password, formData.rememberMe)
+    }
+    if (props.isAuth) {
+        return <Redirect to="/profile" />
     }
 
     return (
@@ -40,4 +75,6 @@ const Login = (props) => {
         </div>
     )
 }
-export default Login
+const mapStateToProps = (state) => ({ isAuth: state.auth.isAuth })
+
+export default connect(mapStateToProps, { login })(Login)

@@ -56,14 +56,14 @@ const Users = ({ totalCount, pageSize, users, onPageChange, currentPage, followi
 							{user.followed
 								? <button
 									disabled={followingInProgress.some(id => id === user.id)}
-									className={style.btn}
+									className={style.btnUsers}
 									onClick={() => getUnfollow(user.id)}>
 
 									Unfollow</button>
 
 								: <button
 									disabled={followingInProgress.some(id => id === user.id)}
-									className={style.btn}
+									className={style.btnUsers}
 									onClick={() => getFollow(user.id)}>
 									Follow</button>
 							}
