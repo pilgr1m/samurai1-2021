@@ -3,48 +3,26 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
 import { login } from '../../redux/authReducer'
-import { Input } from '../common/FormControls'
+import { createField, Input } from '../common/FormControls'
 import { required } from '../utils/validator'
 
 import style from "./Login.module.css"
 
 
-let LoginForm = (props) => {
-    const { handleSubmit } = props
+let LoginForm = ({ handleSubmit, error }) => {
+
     return (
         <form onSubmit={handleSubmit}>
-            <div >
-                <Field
-                    validate={[required]}
-                    className={style.inputLogin}
-                    placeholder="email"
-                    name="email"
-                    component={Input}
-                    type="text"
-                />
-            </div>
-            <div>
-                <Field
-                    validate={[required]}
-                    className={style.inputPass} placeholder="password"
-                    name="password"
-                    component={Input}
-                    type="password"
-                />
-            </div>
-            <div className={style.divCheckbox} >
-                <Field
-                    className={style.inputCheckbox}
-                    name="rememberMe"
-                    component="input"
-                    type="checkbox"
-                />
-                remember me
-            </div>
+            {createField("email", "email", [required], Input, "text", style.inputLogin, null, null)}
 
-            {props.error
+            {createField("password", "password", [required], Input, "password", style.inputPass, null, null)}
+
+
+            {createField(null, "rememberMe", [], Input, "checkbox", style.inputCheckbox, style.divCheckbox, "remember me")}
+
+            {error
                 ? <div className={style.formError}>
-                    {props.error}
+                    {error}
                 </div>
                 : null
             }

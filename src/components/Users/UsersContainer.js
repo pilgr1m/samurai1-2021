@@ -6,8 +6,10 @@ import Preloader from '../common/Preloader'
 import { getCurrentPage, getFollowingProgress, getIsFetching, getPageSize, getTotalCount, getUsers } from '../../redux/usersSelectors'
 
 class UsersContainer extends React.Component {
+
 	componentDidMount() {
-		this.props.requestUsersThunk(this.props.currentPage, this.props.pageSize)
+		const { currentPage, pageSize } = this.props
+		this.props.requestUsersThunk(currentPage, pageSize)
 		//код ниже ушел в thunk(creator) в редюсере
 		// this.props.toggleIsFetching(true)
 		// usersAPI.getUsers(currentPage, pageSize).then(response => {

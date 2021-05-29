@@ -1,13 +1,16 @@
-import style from "./ProfileInfo.module.css"
-import ava from '../../images/ava.png'
 import Preloader from "../../common/Preloader"
 import ProfileStatus from "./ProfileStatus"
 
+import style from "./ProfileInfo.module.css"
+import ava from '../../images/ava.png'
+
 const ProfileInfo = ({ profile, status, updateStatus }) => {
-	// debugger
 	if (!profile) {
 		return <Preloader />
 	}
+	console.log(profile.photos)
+
+	const avatar = (profile.photos.small === null || !profile.photos) ? ava : profile.photos.small
 
 	return (
 		<div className={style.profileInfoWrapper}>
@@ -18,8 +21,10 @@ const ProfileInfo = ({ profile, status, updateStatus }) => {
 			<div className={style.avaDescr}>
 				<img
 					className={style.ava}
-					src={profile.photos ? profile.photos.small : ava}
-					alt="ava" />
+					src={avatar}
+					alt="avatar"
+				/>
+
 				<div className={style.name}>{profile.fullName}(id:{profile.userId})</div>
 
 				<ProfileStatus
