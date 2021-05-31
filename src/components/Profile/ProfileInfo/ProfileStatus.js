@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import style from "./ProfileInfo.module.css"
 
 const ProfileStatus = (props) => {
-	// debugger
 	const [editMode, setEditMode] = useState(false)
 	const [status, setStatus] = useState(props.status)
 
@@ -46,5 +45,4 @@ const ProfileStatus = (props) => {
 		</>
 	)
 }
-
 export default ProfileStatus
