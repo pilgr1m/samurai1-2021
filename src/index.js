@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from "react-router-dom"
+import SamuraiJSApp from './App'
 import App from './App'
 import store from './redux/reduxStore'
 
@@ -11,7 +12,7 @@ ReactDOM.render(
         <Router >
 
             <Provider store={store}>
-                <App />
+                <SamuraiJSApp />
             </Provider>
 
         </Router>
