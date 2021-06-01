@@ -1,0 +1,28 @@
+.pagination {
+    font-size: 15px;
+    margin-bottom: 16px;
+    cursor: pointer;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.selectedPage {
+    font-size: 16px;
+    font-weight: 500;
+	border: 1px solid rgb(253, 236, 0);
+	border-radius: 4px;
+	padding: 1px;
+}
+
+.btnPagi{
+	padding: 2px;
+	background: rgb(253, 236, 0);
+	margin: 0 4px;
+	font-size: 12px;
+	font-weight: 600;
+}
+.page {
+	margin: 0 2px;
+	font-size: 16px;
+	border: 1px solid rgba(46, 46, 46, 0.2);
+	border-radius: 4px;
+	padding: 1px;
+}

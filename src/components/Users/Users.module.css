@@ -3,12 +3,11 @@
 }
 .usersBlock .totalCount{
     display: block;
-    border-bottom: 1px solid rgb(2, 2, 2,0.3);
     font-size: 18px;
     font-weight: 300;
     margin-bottom: 6px;
     box-sizing: border-box;
-    width: 140px;
+    margin-bottom: 10px;
 }
 .usersBlock .totalCount .count{
    background-color: rgba(253, 236, 0);
@@ -17,29 +16,6 @@
    font-weight: 500;
    padding: 0px;
 }
-.usersBlock .pagination {
-    font-size: 15px;
-    margin-bottom: 6px;
-    cursor: pointer;
-}
-.selectedPage {
-    font-size: 18px;
-    color: rgb(253, 236, 0);
-    font-weight: 500;
-}
-
-/* .usersBlock .btnGetUsers{
-    background-color: rgb(33, 189, 41);
-    color: #fff;
-    position: relative;
-    top: 10px;
-    cursor: pointer;
-    font-weight: 500;
-    width: 100px;
-    height: 30px;
-    margin-bottom: 20px;
-    letter-spacing: 0.5px;
-} */
 
 .userWrapper{
     display: flex;

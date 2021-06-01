@@ -1,25 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import style from '../Users/Users.module.css'
+import style from './Paginator.module.css'
 
 
-const Paginator = ({ totalCount, pageSize, onPageChange, currentPage }) => {
+const Paginator = ({ totalCount, pageSize, onPageChange, currentPage, portionSize = 10 }) => {
+
 	let pagesCount = Math.ceil(totalCount / pageSize)
 	let pages = []
 	for (let i = 1; i <= pagesCount; i++) {
 		pages.push(i)
 	}
 
+	const portionCount = Math.ceil(pagesCount / portionSize)
+	const [portionNumber, setPortionNumber] = useState(1)
+	const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1
+	const rightPortionPageNumber = portionNumber * portionSize
+
+
 	return <div className={style.pagination}>
-		{pages.map((page, index) => {
-			return <span
-				key={index}
-				className={currentPage === page ? style.selectedPage : ""}
-				onClick={() => { onPageChange(page) }}
+		{portionNumber > 1 &&
+			<button
+				className={style.btnPagi}
+				onClick={() => { setPortionNumber(portionNumber - 1) }}
 			>
-				{page}
-			</span>
-		})}
+				&lt; PREV </button>
+		}
+
+		{
+			pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber).map(p => {
+				return <span
+					key={p}
+					className={currentPage === p ? style.selectedPage : style.page}
+					onClick={() => { onPageChange(p) }}
+				>
+					{p}
+				</span>
+			})
+		}
+
+
+		{portionCount > portionNumber &&
+			<button
+				className={style.btnPagi}
+				onClick={() => { setPortionNumber(portionNumber + 1) }}
+			>
+				NEXT &gt; </button>
+		}
 	</div>
 }
 
