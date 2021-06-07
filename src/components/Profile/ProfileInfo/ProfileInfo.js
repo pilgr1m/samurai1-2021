@@ -4,13 +4,21 @@ import ProfileStatus from "./ProfileStatus"
 import style from "./ProfileInfo.module.css"
 import ava from '../../images/ava.png'
 
-const ProfileInfo = ({ profile, status, updateStatus }) => {
+const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
+
 	if (!profile) {
 		return <Preloader />
 	}
-	console.log(profile.photos)
 
-	const avatar = (profile.photos.small === null || !profile.photos) ? ava : profile.photos.small
+	const avatar = (profile.photos.large === null || !profile.photos) ? ava : profile.photos.large
+
+	const onPhotoSelect = (e) => {
+		console.log(e.target.files[0])
+		if (e.target.files) {
+			savePhoto(e.target.files[0])
+		}
+	}
+
 
 	return (
 		<div className={style.profileInfoWrapper}>
@@ -24,6 +32,7 @@ const ProfileInfo = ({ profile, status, updateStatus }) => {
 					src={avatar}
 					alt="avatar"
 				/>
+				{isOwner && <input type="file" onChange={onPhotoSelect} />}
 
 				<div className={style.name}>{profile.fullName}(id:{profile.userId})</div>
 

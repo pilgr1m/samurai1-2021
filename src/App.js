@@ -13,11 +13,12 @@ import { Provider } from 'react-redux'
 import Preloader from "./components/common/Preloader"
 import { compose } from "redux"
 import store from './redux/reduxStore'
+import ProfileContainer from "./components/Profile/ProfileContainer"
 
 import './App.css'
-import withSuspense from "./components/hoc/withSuspense"
 
-const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"))
+// import withSuspense from "./components/hoc/withSuspense"
+// const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"))
 
 class App extends React.Component {
 	componentDidMount() {
@@ -35,12 +36,12 @@ class App extends React.Component {
 				<Navbar />
 				<div className="content">
 
-					{/* <Route path="/profile/:userId?" >
-						<ProfileContainer />
-					</Route> */}
 					<Route path="/profile/:userId?" >
-						{withSuspense(ProfileContainer)}
+						<ProfileContainer />
 					</Route>
+					{/* <Route path="/profile/:userId?" >
+						{withSuspense(ProfileContainer)}
+					</Route> */}
 
 					<Route path="/dialogs" >
 						<DialogsContainer />

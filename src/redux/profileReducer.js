@@ -4,6 +4,7 @@ const ADD_POST = "samurai2021/profile/ADD_POST"
 const SET_USER_PROFILE = "samurai2021/profile/SET_USER_PROFILE"
 const SET_STATUS = "samurai2021/profile/SET_STATUS"
 const DELETE_POST = "samurai2021/profile/DELETE_POST"
+const SAVE_PHOTO = "samurai2021/profile/SAVE_PHOTO"
 
 
 let initialState = {
@@ -41,6 +42,10 @@ export const profileReducer = (state = initialState, action) => {
 			return { ...state, posts: state.posts.filter(p => p.id !== action.postId) }
 		}
 
+		case SAVE_PHOTO: {
+			return { ...state, profile: { ...state.profile, photo: action.photos } }
+		}
+
 		default: return state
 	}
 }
@@ -54,6 +59,9 @@ export const setStatus = (status) => {
 }
 export const deletePost = (postId) => {
 	return { type: DELETE_POST, postId }
+}
+export const savePhotoSuccess = (photos) => {
+	return { type: SAVE_PHOTO, photos }
 }
 
 
@@ -80,3 +88,12 @@ export const updateStatus = (status) => {
 	}
 }
 
+export const savePhoto = (file) => {
+	return async (dispatch) => {
+		let response = await profileAPI.savePhoto(file)
+
+		if (response.data.resultCode === 0) {
+			dispatch(savePhotoSuccess(response.data.data.photo))
+		}
+	}
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import Profile from './Profile'
 import { connect } from 'react-redux'
-import { getProfileInfo, getStatus, updateStatus } from '../../redux/profileReducer'
+import { getProfileInfo, getStatus, updateStatus, savePhoto } from '../../redux/profileReducer'
 import { withRouter } from 'react-router-dom'
 import withAuthRedirect from '../hoc/withAuthRedirect'
 import { compose } from 'redux'
@@ -9,8 +9,7 @@ import { compose } from 'redux'
 
 
 class ProfileContainer extends React.Component {
-	componentDidMount() {
-		// debugger
+	refreshProfile() {
 		let userId = this.props.match.params.userId
 		if (!userId) {
 			userId = this.props.authorizedUserId
@@ -22,14 +21,28 @@ class ProfileContainer extends React.Component {
 		this.props.getStatus(userId)
 	}
 
+	componentDidMount() {
+		this.refreshProfile()
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+
+		if (this.props.match.params.userId !== prevProps.match.params.userId) {
+			this.refreshProfile()
+		}
+	}
+
+
 	render() {
-		// console.log("render profileContainer")
+
 		return (
 			<>
 				<Profile
+					isOwner={!this.props.match.params.userId}
 					profile={this.props.profile}
 					status={this.props.status}
 					updateStatus={this.props.updateStatus}
+					savePhoto={this.props.savePhoto}
 				/>
 			</>
 		)
@@ -51,6 +64,7 @@ export default compose(
 		getProfileInfo,
 		getStatus,
 		updateStatus,
+		savePhoto
 	}),
 	withRouter,
 	withAuthRedirect,
