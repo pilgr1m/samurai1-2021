@@ -26,7 +26,7 @@ const ProfileStatus = (props) => {
 
 	return (
 		<>
-			status :
+			status: -
 			{editMode
 				? <div>
 					<input
@@ -37,8 +37,8 @@ const ProfileStatus = (props) => {
 						onChange={onStatusChange}
 					/>
 				</div>
-				: <div>
-					<span onDoubleClick={activateEditMode}>{status || "no status"}</span>
+				: <div style={{ display: "inline-block" }}>
+					<span onDoubleClick={activateEditMode}>  {status || "no status"}</span>
 				</div>
 			}
 		</>

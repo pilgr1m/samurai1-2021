@@ -41,8 +41,6 @@ export const login = (email, password, rememberMe) => {
         if (response.data.resultCode === 0) {
             dispatch(getAuthUserData())
         } else {
-            console.log("response.data- ", response.data)
-
             let message = response.data.messages ? response.data.messages[0] : "some error"
             dispatch(stopSubmit("login", { _error: message }))
         }

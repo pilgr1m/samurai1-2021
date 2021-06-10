@@ -10,6 +10,7 @@ const Profile = (props) => {
 	return (
 		<>
 			<ProfileInfo
+				saveProfile={props.saveProfile}
 				savePhoto={props.savePhoto}
 				isOwner={props.isOwner}
 				profile={props.profile}

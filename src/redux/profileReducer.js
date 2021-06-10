@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form"
 import { profileAPI } from "../api/api"
 
 const ADD_POST = "samurai2021/profile/ADD_POST"
@@ -5,6 +6,7 @@ const SET_USER_PROFILE = "samurai2021/profile/SET_USER_PROFILE"
 const SET_STATUS = "samurai2021/profile/SET_STATUS"
 const DELETE_POST = "samurai2021/profile/DELETE_POST"
 const SAVE_PHOTO = "samurai2021/profile/SAVE_PHOTO"
+const SAVE_PROFILE = "samurai2021/profile/SAVE_PROFILE"
 
 
 let initialState = {
@@ -46,6 +48,10 @@ export const profileReducer = (state = initialState, action) => {
 			return { ...state, profile: { ...state.profile, photo: action.photos } }
 		}
 
+		case SAVE_PROFILE: {
+			return { ...state, profile: action.profile }
+		}
+
 		default: return state
 	}
 }
@@ -63,24 +69,27 @@ export const deletePost = (postId) => {
 export const savePhotoSuccess = (photos) => {
 	return { type: SAVE_PHOTO, photos }
 }
+export const saveProfileSuccess = (profile) => {
+	return { type: SAVE_PROFILE, profile }
+}
 
 
 export const getProfileInfo = (id) => {
 	return async (dispatch) => {
-		let response = await profileAPI.getProfile(id)
+		const response = await profileAPI.getProfile(id)
 		dispatch(setUserProfile(response.data))
 	}
 }
 
 export const getStatus = (id) => {
 	return async (dispatch) => {
-		let response = await profileAPI.getStatus(id)
+		const response = await profileAPI.getStatus(id)
 		dispatch(setStatus(response.data))
 	}
 }
 export const updateStatus = (status) => {
 	return async (dispatch) => {
-		let response = await profileAPI.updateStatus(status)
+		const response = await profileAPI.updateStatus(status)
 		if (response.data.resultCode === 0) {
 			dispatch(setStatus(status))
 		}
@@ -90,10 +99,26 @@ export const updateStatus = (status) => {
 
 export const savePhoto = (file) => {
 	return async (dispatch) => {
-		let response = await profileAPI.savePhoto(file)
-
+		const response = await profileAPI.savePhoto(file)
+		debugger
 		if (response.data.resultCode === 0) {
 			dispatch(savePhotoSuccess(response.data.data.photo))
+		}
+	}
+}
+
+export const saveProfile = (profile) => {
+	return async (dispatch, getState) => {
+		const userId = getState().auth.userId
+		const response = await profileAPI.saveProfile(profile)
+
+		if (response.data.resultCode === 0) {
+			dispatch(getProfileInfo(userId))
+		} else {
+			console.log(response.data)
+			dispatch(stopSubmit("edit-profile", { _error: response.data.messages[0] }))
+			// dispatch(stopSubmit("edit-profile", { "contacts": { "facebook": response.data.messages[0] } }))
+			return Promise.reject(response.data.messages[0])
 		}
 	}
 }
