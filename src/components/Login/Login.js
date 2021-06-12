@@ -9,7 +9,7 @@ import { required } from '../utils/validator'
 import style from "./Login.module.css"
 
 
-let LoginForm = ({ handleSubmit, error }) => {
+let LoginForm = ({ handleSubmit, error, captchUrl }) => {
 
     return (
         <form onSubmit={handleSubmit}>
@@ -19,6 +19,12 @@ let LoginForm = ({ handleSubmit, error }) => {
 
 
             {createField(null, "rememberMe", [], Input, "checkbox", style.inputCheckbox, style.divCheckbox, "remember me")}
+
+            {captchUrl && <img src={captchUrl} alt="captcha" />}
+            {
+                captchUrl &&
+                createField("symbols from image", "captcha", [required], Input, {})
+            }
 
             {error
                 ? <div className={style.formError}>
@@ -40,7 +46,7 @@ const LoginReduxForm = reduxForm({ form: "login" })(LoginForm)
 const Login = (props) => {
     const onSubmit = (formData) => {
         // console.log(formData)
-        props.login(formData.email, formData.password, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captch)
     }
     if (props.isAuth) {
         return <Redirect to="/profile" />
@@ -49,10 +55,13 @@ const Login = (props) => {
     return (
         <div className={style.loginWrapper}>
             <h3>Login </h3>
-            <LoginReduxForm onSubmit={onSubmit} />
+            <LoginReduxForm onSubmit={onSubmit} captchUrl={props.captchUrl} />
         </div>
     )
 }
-const mapStateToProps = (state) => ({ isAuth: state.auth.isAuth })
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth,
+    captchUrl: state.auth.captchUrl,
+})
 
 export default connect(mapStateToProps, { login })(Login)
