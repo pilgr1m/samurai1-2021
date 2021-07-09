@@ -26,7 +26,6 @@ const PostForm = (props) => {
 const PostReduxForm = reduxForm({ form: "post" })(PostForm)
 
 const MyPosts = React.memo((props) => {
-	console.log("my posts")
 	let postsItems = props.posts.map(p => <Post key={p.id} message={p.post} likes={p.likes} />)
 
 	const addPost = (values) => {

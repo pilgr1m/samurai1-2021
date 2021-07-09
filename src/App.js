@@ -2,9 +2,8 @@ import React, { Suspense } from "react"
 import HeaderContainer from "./components/Header/HeaderContainer"
 import Navbar from "./components/Navbar/Navbar"
 import DialogsContainer from "./components/Dialogs/DialogsContainer"
-// import ProfileContainer from "./components/Profile/ProfileContainer"
 import UsersContainer from "./components/Users/UsersContainer"
-import { Route, Switch } from "react-router-dom"
+import { Redirect, Route, Switch } from "react-router-dom"
 import Login from "./components/Login/Login"
 import { connect } from "react-redux"
 import { initializeApp } from "./redux/appReducer"
@@ -36,24 +35,32 @@ class App extends React.Component {
 				<Navbar />
 				<div className="content">
 
-					<Route path="/profile/:userId?" >
-						<ProfileContainer />
-					</Route>
-					{/* <Route path="/profile/:userId?" >
+					<Switch>
+						<Redirect exact from="/" to="/profile" />
+						<Route path="/profile/:userId?" >
+							<ProfileContainer />
+						</Route>
+						{/* <Route path="/profile/:userId?" >
 						{withSuspense(ProfileContainer)}
 					</Route> */}
 
-					<Route path="/dialogs" >
-						<DialogsContainer />
-					</Route>
+						<Route path="/dialogs" >
+							<DialogsContainer />
+						</Route>
 
-					<Route path="/users" >
-						<UsersContainer />
-					</Route>
+						<Route path="/users" >
+							<UsersContainer />
+						</Route>
 
-					<Route path="/login" >
-						<Login />
-					</Route>
+						<Route exact path="/login" >
+							<Login />
+						</Route>
+
+						<Route path="*" >
+							<div> 404 NOT FOUND</div>
+						</Route>
+
+					</Switch>
 
 				</div>
 			</div>

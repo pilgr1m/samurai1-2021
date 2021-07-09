@@ -4,8 +4,18 @@ import Paginator from '../common/Paginator'
 import style from './Users.module.css'
 import User from './User'
 
+type PropsType = {
+	totalCount: number
+	pageSize: number
+	users: []
+	currentPage: number
+	followingInProgress: boolean
+	onPageChange: () => void
+	unfollow: () => void
+	follow: () => void
+}
 
-const Users = ({ totalCount, pageSize, users, onPageChange, currentPage, followingInProgress, unfollow, follow }) => {
+const Users: React.FC<PropsType> = ({ totalCount, pageSize, users, onPageChange, currentPage, followingInProgress, unfollow, follow }) => {
 
 	return (
 		<div className={style.usersBlock}>

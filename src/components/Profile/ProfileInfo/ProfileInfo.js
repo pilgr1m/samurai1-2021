@@ -63,7 +63,6 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
 }
 
 const ProfileData = ({ profile, isOwner, goToEditMode }) => {
-	console.log(`ddd${isOwner}`)
 	return (
 		<div>
 			{isOwner && <div><button onClick={goToEditMode}> Edit</button></div>}
