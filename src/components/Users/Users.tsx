@@ -3,16 +3,17 @@ import Paginator from '../common/Paginator'
 
 import style from './Users.module.css'
 import User from './User'
+import { UserType } from '../../redux/types'
 
 type PropsType = {
 	totalCount: number
 	pageSize: number
-	users: []
+	users: UserType[]
 	currentPage: number
-	followingInProgress: boolean
-	onPageChange: () => void
-	unfollow: () => void
-	follow: () => void
+	followingInProgress: Array<number>
+	onPageChange: (pageNumber: number) => void
+	unfollow: (userId: number) => void
+	follow: (userId: number) => void
 }
 
 const Users: React.FC<PropsType> = ({ totalCount, pageSize, users, onPageChange, currentPage, followingInProgress, unfollow, follow }) => {

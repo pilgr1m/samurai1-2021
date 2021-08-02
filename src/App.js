@@ -49,7 +49,7 @@ class App extends React.Component {
 						</Route>
 
 						<Route path="/users" >
-							<UsersContainer />
+							<UsersContainer pageTitle={"users"} />
 						</Route>
 
 						<Route exact path="/login" >
