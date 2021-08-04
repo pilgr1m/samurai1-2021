@@ -69,7 +69,7 @@ type LoginResponseType = {
 	data: {
 		userId: number
 	}
-	resultCode: ResultCodesEnum | ResultCodeForCaptcha
+	resultCode: ResultCodesEnum | ResultCodesForCaptcha
 	messages: Array<string>
 }
 

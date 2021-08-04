@@ -1,6 +1,6 @@
 import { Dispatch } from "redux"
 import { ThunkAction } from "redux-thunk"
-import { ResultCodeEnum, usersAPI } from "../api/api"
+import { ResultCodesEnum, usersAPI } from "../api/api"
 import { updateObjInArray } from "../components/utils/helpers"
 import { AppStateType } from "./reduxStore"
 import { UserType } from "./types"
