@@ -1,5 +1,5 @@
 import { stopSubmit } from "redux-form"
-import { authAPI, securityAPI } from "../api/api"
+import { authAPI, ResultCodesEnum, ResultCodesForCaptcha, securityAPI } from "../api/api"
 const SET_USER_DATA = "samurai2021/profile/SET_USER_DATA"
 const GET_CAPTCHA_URL_SUCCESS = "samurai2021/profile/GET_CAPTCHA_URL_SUCCESS"
 
@@ -57,9 +57,10 @@ export const getCapthcaUrlSuccess = (captchaUrl: string): getCapthcaUrlSuccessAc
 
 export const getAuthUserData = () => {
 	return async (dispatch: any) => {
-		let response = await authAPI.me()
-		if (response.data.resultCode === 0) {
-			let { email, id, login } = response.data.data
+		let meData = await authAPI.me()
+
+		if (meData.resultCode === 0) {
+			let { email, id, login } = meData.data
 			dispatch(setAuthUserData(email, id, login, true))
 		}
 	}
@@ -67,22 +68,24 @@ export const getAuthUserData = () => {
 
 export const login = (email: string, password: string, rememberMe: boolean) => {
 	return async (dispatch: any) => {
-		let response = await authAPI.login(email, password, rememberMe)
-		if (response.data.resultCode === 0) {
+		let loginData = await authAPI.login(email, password, rememberMe)
+		if (loginData.resultCode === ResultCodesEnum.Success) {
 			dispatch(getAuthUserData())
 		} else {
-			if (response.data.resultCode === 10) {
+			if (loginData.resultCode === ResultCodesForCaptcha.CaptchaIsRequired) {
 				dispatch(getCaptchaUrl())
 			}
-			let message = response.data.messages ? response.data.messages[0] : "some error"
+			let message = loginData.messages ? loginData.messages[0] : "some error"
 			dispatch(stopSubmit("login", { _error: message }))
 		}
 	}
 }
 
-export const logout = (email: string | null, password: string | null, rememberMe: boolean | undefined, captcha: string | null) => {
+// export const logout = (email: string | null, password: string | null, rememberMe: boolean | undefined, captcha: string | null) => {
+export const logout = () => {
 	return async (dispatch: any) => {
-		let response = await authAPI.logout(email, password, rememberMe, captcha)
+		// let response = await authAPI.logout(email, password, rememberMe, captcha)
+		let response = await authAPI.logout()
 		if (response.data.resultCode === 0) {
 			dispatch(setAuthUserData(null, null, null, false))
 		}

@@ -1,6 +1,6 @@
 import { Dispatch } from "redux"
 import { ThunkAction } from "redux-thunk"
-import { usersAPI } from "../api/api"
+import { ResultCodeEnum, usersAPI } from "../api/api"
 import { updateObjInArray } from "../components/utils/helpers"
 import { AppStateType } from "./reduxStore"
 import { UserType } from "./types"
@@ -145,7 +145,7 @@ const _followUnfollowFlow = async (dispatch: DispatchType, id: number, apiMethod
 	dispatch(toggleFollowProgress(true, id))
 	let response = await apiMethod(id)
 
-	if (response.data.resultCode === 0) {
+	if (response.data.resultCode === ResultCodesEnum.Success) {
 		dispatch(actionCreator(id))
 	}
 	dispatch(toggleFollowProgress(false, id))
