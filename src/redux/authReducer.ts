@@ -35,7 +35,7 @@ export const authReducer = (state = initialState, action: any): InitialStateType
 	}
 }
 
-type DataPaylodType = {
+type DataPayloadType = {
 	email: string | null
 	userId: number | null
 	login: string | null
@@ -43,7 +43,7 @@ type DataPaylodType = {
 }
 type SetAuthUserDataActionType = {
 	type: typeof SET_USER_DATA,
-	data: DataPaylodType
+	data: DataPayloadType
 }
 export const setAuthUserData = (email: string | null, userId: number | null, login: string | null, isAuth: boolean | null): SetAuthUserDataActionType => ({ type: SET_USER_DATA, data: { email, userId, login, isAuth } })
 
@@ -66,7 +66,7 @@ export const getAuthUserData = () => {
 	}
 }
 
-export const login = (email: string, password: string, rememberMe: boolean) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string) => {
 	return async (dispatch: any) => {
 		let loginData = await authAPI.login(email, password, rememberMe)
 		if (loginData.resultCode === ResultCodesEnum.Success) {
