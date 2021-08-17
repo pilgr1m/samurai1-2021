@@ -2,7 +2,8 @@ import React from 'react'
 import Paginator from '../common/Paginator'
 
 import style from './Users.module.css'
-import User from './User'
+//@ts-ignore
+import User from './User.jsx'
 import { UserType } from '../../redux/types'
 
 type PropsType = {

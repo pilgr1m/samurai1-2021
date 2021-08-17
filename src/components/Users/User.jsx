@@ -1,10 +1,19 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { UserType } from '../../redux/types'
 
 import url from '../images/photoUrl.webp'
 import style from './Users.module.css'
 
 
+// type PropsType = {
+// 	user: UserType
+// 	followingInProgress: Array<number>
+// 	unfollow: (userId: number) => void
+// 	follow: (userId: number) => void
+// }
+
+// const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow }) => {
 const User = ({ user, followingInProgress, unfollow, follow }) => {
 
 	return (
