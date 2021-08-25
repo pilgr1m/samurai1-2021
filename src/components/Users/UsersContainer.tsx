@@ -52,7 +52,7 @@ class UsersContainer extends React.Component<PropsType> {
 	render() {
 		return (
 			<>
-				<h2>{this.props.pageTitle}</h2>
+				<h4>{this.props.pageTitle}</h4>
 				{this.props.isFetching ? <Preloader /> : null}
 				<Users
 					totalCount={this.props.totalCount}

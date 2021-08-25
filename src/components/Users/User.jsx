@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { UserType } from '../../redux/types'
 
 import url from '../images/photoUrl.webp'
 import style from './Users.module.css'

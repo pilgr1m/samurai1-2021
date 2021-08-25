@@ -26,7 +26,7 @@ const ProfileStatus = (props) => {
 
 	return (
 		<>
-			status: -
+			status:<span> </span>
 			{editMode
 				? <div>
 					<input

@@ -2,7 +2,7 @@ import React, { Suspense } from "react"
 import HeaderContainer from "./components/Header/HeaderContainer"
 import Navbar from "./components/Navbar/Navbar"
 import DialogsContainer from "./components/Dialogs/DialogsContainer"
-import UsersContainer from "./components/Users/UsersContainer"
+import UsersContainer from "./components/Users/UsersContainer.tsx"
 import { Redirect, Route, Switch } from "react-router-dom"
 import Login from "./components/Login/Login"
 import { connect } from "react-redux"
@@ -49,7 +49,7 @@ class App extends React.Component {
 						</Route>
 
 						<Route path="/users" >
-							<UsersContainer pageTitle={"users"} />
+							<UsersContainer pageTitle={"Users"} />
 						</Route>
 
 						<Route exact path="/login" >
