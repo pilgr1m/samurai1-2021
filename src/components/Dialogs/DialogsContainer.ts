@@ -6,13 +6,9 @@ import Dialogs from './Dialogs'
 import withAuthRedirect from '../hoc/withAuthRedirect';
 
 
-const mapStateToProps = (state: AppStateType) => {
-	console.log('state.dialogsPage', state.dialogsPage)
-
-	return {
-		dialogsPage: state.dialogsPage,
-	}
-}
+const mapStateToProps = (state: AppStateType) => ({
+	dialogsPage: state.dialogsPage
+})
 
 export default compose<React.ComponentType>(
 	connect(
@@ -20,5 +16,5 @@ export default compose<React.ComponentType>(
 		{ sendMessage: actions.sendMessageAC }
 	),
 	withAuthRedirect
-)(Dialogs) as React.ComponentType
+)(Dialogs)
 // )(Dialogs) as React.ComponentType

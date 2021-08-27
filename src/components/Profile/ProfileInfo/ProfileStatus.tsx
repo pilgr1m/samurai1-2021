@@ -2,14 +2,14 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import style from "./ProfileInfo.module.css"
 
 type PropsType = {
-	statusProp: string
+	status: string
 	updateStatus: (status: string) => void
 }
 
-const ProfileStatus: React.FC<PropsType> = ({ updateStatus, statusProp }) => {
+const ProfileStatus: React.FC<PropsType> = ({ updateStatus, status }) => {
 	// debugger
 	const [editMode, setEditMode] = useState(false)
-	const [status, setStatus] = useState(statusProp)
+	const [statusState, setStatusState] = useState(status)
 
 	const activateEditMode = () => {
 		setEditMode(true)
@@ -17,17 +17,17 @@ const ProfileStatus: React.FC<PropsType> = ({ updateStatus, statusProp }) => {
 
 	const deactivateEditMode = () => {
 		setEditMode(false)
-		updateStatus(status)
+		updateStatus(statusState)
 	}
 
 	const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
 		console.log("status change")
-		setStatus(e.currentTarget.value)
+		setStatusState(e.currentTarget.value)
 	}
 
 	useEffect(() => {
-		setStatus(statusProp)
-	}, [statusProp])
+		setStatusState(status)
+	}, [status])
 
 	return (
 		<>

@@ -5,7 +5,7 @@ import { getProfileInfo, getStatus, updateStatus, savePhoto, saveProfile } from 
 import { withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import withAuthRedirect from '../hoc/withAuthRedirect'
-// import style from "./Profile.module.css"
+import { AppStateType } from '../../redux/reduxStore'
 
 
 class ProfileContainer extends React.Component {
@@ -51,7 +51,7 @@ class ProfileContainer extends React.Component {
 }
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType) => {
 	return {
 		profile: state.profilePage.profile,
 		status: state.profilePage.status,

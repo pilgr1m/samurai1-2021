@@ -1,10 +1,10 @@
 import React from 'react'
 import Paginator from '../common/Paginator'
+import { UserType } from '../../redux/types'
+import User from './User'
 
 import style from './Users.module.css'
-//@ts-ignore
-import User from './User.jsx'
-import { UserType } from '../../redux/types'
+
 
 type PropsType = {
 	totalCount: number

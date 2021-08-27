@@ -1,13 +1,20 @@
 import React from "react"
 import { reduxForm } from "redux-form"
+import { ProfileType } from "../../../redux/types"
 import { createField, Input, TextArea } from "../../common/FormControls"
 import { Contacts } from "./ProfileInfo"
-
 
 import style from "./ProfileInfo.module.css"
 
 
-const ProfileDataForm = ({ handleSubmit, profile, error }) => {
+type PropsType = {
+    profile: ProfileType
+    initialValues: ProfileType
+    onSubmit: () => void
+
+}
+
+const ProfileDataForm: React.FC<PropsType> = ({ handleSubmit, profile, error }) => {
     return (
         <form onSubmit={handleSubmit}>
             <div>

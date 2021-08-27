@@ -26,6 +26,7 @@ type DispatchPropsType = {
 	initializeApp: () => void
 }
 const SuspendedDialog = withSuspense(DialogsContainer)
+const SuspendedProfile = withSuspense(ProfileContainer)
 
 
 class App extends React.Component<PropsType & DispatchPropsType> {
@@ -45,9 +46,13 @@ class App extends React.Component<PropsType & DispatchPropsType> {
 
 					<Switch>
 						<Redirect exact from="/" to="/profile" />
-						<Route path="/profile/:userId?" >
-							<ProfileContainer />
-						</Route>
+						{/* <Route path="/profile/:userId?" >
+							{<ProfileContainer />}
+						</Route> */}
+						<Route path="/profile/:userId?"
+							render={() => <SuspendedProfile />}
+						/>
+
 
 						{/* <Route path="/dialogs" >
 							<DialogsContainer />
