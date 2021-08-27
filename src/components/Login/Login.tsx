@@ -7,7 +7,7 @@ import { AppStateType } from '../../redux/reduxStore'
 import { createField, Input } from '../common/FormControls'
 import { required } from '../utils/validator'
 
-import style from "./Login.module.css"
+import style from './Login.module.css'
 
 
 type LoginFormOwnPropsType = {

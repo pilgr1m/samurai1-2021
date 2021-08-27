@@ -22,10 +22,10 @@ let initialState = {
 	] as MessageType[],
 }
 
-export type InitialStateType = typeof initialState
+export type InitialDialogStateType = typeof initialState
 type ActionsType = InferActionsTypes<typeof actions>
 
-export const dialogsReducer = (state = initialState, action: ActionsType):InitialStateType => {
+export const dialogsReducer = (state = initialState, action: ActionsType): InitialDialogStateType => {
 	switch (action.type) {
 		case 'DIALOG_REDUCER/SEND_MESSAGE': {
 			let newMessage = {
@@ -44,6 +44,6 @@ export const dialogsReducer = (state = initialState, action: ActionsType):Initia
 }
 
 export const actions = {
-	sendMessageAC:  (newMessage: string) => ({ type: 'DIALOG_REDUCER/SEND_MESSAGE', newMessage } as const)
+	sendMessageAC: (newMessage: string) => ({ type: 'DIALOG_REDUCER/SEND_MESSAGE', newMessage } as const)
 }
 
