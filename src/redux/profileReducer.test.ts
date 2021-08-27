@@ -1,21 +1,26 @@
-import { addPostAC, deletePost, profileReducer } from "./profileReducer"
+import { actions, profileReducer } from "./profileReducer"
+import { ProfileType } from "./types"
+
 // it("test name", () => {
 //     //test body:
-//          1.data - данные
+//          1. data - данные
 //          2. action - действие (логика)
-//          3.expectation - (ожидания на выходе)
+//          3. expectation - (ожидания на выходе)
 // })
 const state = {
     posts: [
         { id: 1, post: "Hello, friend", likes: 5 },
         { id: 2, post: "Hi, dude!", likes: 7 },
-    ]
+    ], 
+    profile: null as ProfileType | null,
+	status: "",
+	newPostText: ""
 }
 // let action = addPostAC("Don't stop")
 
 it("length posts shoul be incremented", () => {
     //1. test data
-    let action = addPostAC("Don't stop")
+    let action = actions.addPostAC("Don't stop")
     //2. action
     let newState = profileReducer(state, action)
     //3. expectation
@@ -24,7 +29,7 @@ it("length posts shoul be incremented", () => {
 
 it("text of new post should be correct", () => {
     //1. test data
-    let action = addPostAC("Don't stop")
+    let action = actions.addPostAC("Don't stop")
     //2. action
     let newState = profileReducer(state, action)
     //3. expectation
@@ -33,7 +38,7 @@ it("text of new post should be correct", () => {
 
 it("after deleting length-posts should be devrement", () => {
     //1. test data
-    let action = deletePost(1)
+    let action = actions.deletePost(1)
     //2. action
     let newState = profileReducer(state, action)
     //3. expectation
@@ -42,7 +47,7 @@ it("after deleting length-posts should be devrement", () => {
 
 it("after deleting length shouldn't be changed if ID incorrect", () => {
     //1. test data
-    let action = deletePost(10000)
+    let action = actions.deletePost(10000)
     //2. action
     let newState = profileReducer(state, action)
     //3. expectation
