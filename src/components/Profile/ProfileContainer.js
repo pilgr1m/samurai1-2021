@@ -3,8 +3,8 @@ import Profile from './Profile'
 import { connect } from 'react-redux'
 import { getProfileInfo, getStatus, updateStatus, savePhoto, saveProfile } from '../../redux/profileReducer'
 import { withRouter } from 'react-router-dom'
-import withAuthRedirect from '../hoc/withAuthRedirect'
 import { compose } from 'redux'
+import withAuthRedirect from '../hoc/withAuthRedirect'
 // import style from "./Profile.module.css"
 
 

@@ -12,14 +12,24 @@ import Preloader from "./components/common/Preloader"
 import { compose } from "redux"
 import store, { AppStateType } from './redux/reduxStore'
 import ProfileContainer from "./components/Profile/ProfileContainer"
+import DialogsContainer from "./components/Dialogs/DialogsContainer"
+import withSuspense from "./components/hoc/withSuspense"
 
 import './App.css'
-import DialogsContainer from "./components/Dialogs/DialogsContainer"
+
 
 // import withSuspense from "./components/hoc/withSuspense"
 // const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"))
 
-class App extends React.Component {
+type PropsType = ReturnType<typeof mapStateToProps>
+type DispatchPropsType = {
+	initializeApp: () => void
+}
+const SuspendedDialog = withSuspense(DialogsContainer)
+
+
+class App extends React.Component<PropsType & DispatchPropsType> {
+
 	componentDidMount() {
 		this.props.initializeApp()
 	}
@@ -38,13 +48,15 @@ class App extends React.Component {
 						<Route path="/profile/:userId?" >
 							<ProfileContainer />
 						</Route>
-						{/* <Route path="/profile/:userId?" >
-						{withSuspense(ProfileContainer)}
-					</Route> */}
 
-						<Route path="/dialogs" >
+						{/* <Route path="/dialogs" >
 							<DialogsContainer />
-						</Route>
+						</Route> */}
+
+						<Route path="/dialogs"
+							render={() => <SuspendedDialog />}
+						/>
+
 
 						< Route path="/users" >
 							<UsersContainer pageTitle={"Users"} />
