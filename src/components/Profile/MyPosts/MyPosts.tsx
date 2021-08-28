@@ -43,12 +43,15 @@ type PostFormValuesKeysType = keyof PostFormValuesType
 const PostReduxForm = reduxForm<PostFormValuesType, PostFormPropsType>({ form: "post" })(PostForm)
 
 
-type MyPostsPropsType = {
+export type MyPostsMapPropsType = {
 	posts: PostType[]
+}
+export type MyPostsDispatchType = {
 	addPost: (text: string) => void
+
 }
 
-const MyPosts: React.FC<MyPostsPropsType> = React.memo((props) => {
+const MyPosts: React.FC<MyPostsMapPropsType & MyPostsDispatchType> = React.memo((props) => {
 	let postsItems = props.posts.map(p => <Post key={p.id} message={p.post} likes={p.likes} />)
 
 	const addPost = (values: PostFormValuesType) => {

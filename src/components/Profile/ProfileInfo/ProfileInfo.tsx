@@ -8,7 +8,7 @@ import ava from '../../images/ava.png'
 import { ContactsType, ProfileType } from "../../../redux/types"
 
 type ProfileInfoPropsType = {
-	profile: ProfileType
+	profile: ProfileType | null
 	status: string
 	isOwner: boolean
 	updateStatus: (status: string) => void

@@ -2,8 +2,15 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import style from "./Header.module.css"
 
+export type HeaderPropsType = {
+	login: string | null
+	isAuth: boolean | null
+}
+export type HeaderDispatchType = {
+	logout: () => void
+}
 
-const Header = ({ login, isAuth, logout }) => {
+const Header: React.FC<HeaderPropsType & HeaderDispatchType> = ({ login, isAuth, logout }) => {
 	return (
 		<header className={style.header}>
 			<div className={style.logo}>
@@ -23,7 +30,7 @@ const Header = ({ login, isAuth, logout }) => {
 					</span>
 					: <NavLink to={"/login"}>
 						Login
-				</NavLink>
+					</NavLink>
 				}
 
 			</div>

@@ -1,6 +1,5 @@
 import React, { Suspense } from "react"
 import HeaderContainer from "./components/Header/HeaderContainer"
-import Navbar from "./components/Navbar/Navbar"
 import UsersContainer from "./components/Users/UsersContainer"
 import { Redirect, Route, Switch, withRouter } from "react-router-dom"
 import Login from "./components/Login/Login"
@@ -16,6 +15,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer"
 import withSuspense from "./components/hoc/withSuspense"
 
 import './App.css'
+import Navbar from "./components/Navbar/Navbar"
 
 
 // import withSuspense from "./components/hoc/withSuspense"

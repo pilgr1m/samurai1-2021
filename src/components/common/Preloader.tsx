@@ -2,7 +2,7 @@ import React from 'react'
 import loader from '../images/isFetching.svg'
 
 
-const Preloader = () => {
+const Preloader: React.FC = () => {
     return (
         <div>
             <img src={loader} alt="loading" />
