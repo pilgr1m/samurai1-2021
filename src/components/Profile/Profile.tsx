@@ -1,12 +1,21 @@
 import React from 'react'
+import { ProfileType } from '../../redux/types'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 
-// import style from "./Profile.module.css"
 
+// type PropsType = {
+// 	isOwner: boolean
+// 	profile: ProfileType
+// 	status: string
 
-const Profile = (props) => {
-	// debugger
+// 	updateStatus: (status: string) => void
+// 	savePhoto: (file: File) => void
+// 	saveProfile: (profile: ProfileType) => void
+// }
+
+// const Profile: React.FC<PropsType> = (props) => {
+const Profile = (props: any) => {
 	return (
 		<>
 			<ProfileInfo

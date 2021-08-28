@@ -42,9 +42,9 @@ export function createField<FormKeysType extends string>(
     validator: Array<FieldValidatorType>,
     component: React.FC<WrappedFieldProps>,
     type: string,
-    className: string | null,
-    classnamediv: string | null,
-    text: string | null) {
+    className?: string | null,
+    classnamediv?: string | null,
+    text?: string | null) {
     return <div>
         <Field
             placeholder={placeholder}
@@ -59,3 +59,5 @@ export function createField<FormKeysType extends string>(
         {text}
     </div>
 }
+
+export type GetStringKeys<T> = Extract<keyof T, string>

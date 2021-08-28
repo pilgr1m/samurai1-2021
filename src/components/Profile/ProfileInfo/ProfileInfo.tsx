@@ -57,7 +57,6 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = ({ profile, status, isOwner,
 						goToEditMode={() => { setEditMode(true) }}
 					/>
 				}
-
 				<ProfileStatus
 					status={status}
 					updateStatus={updateStatus}
