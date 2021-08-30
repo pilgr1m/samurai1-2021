@@ -6,7 +6,7 @@ import { UserType } from "./types"
 import { updateObjInArray } from "../components/utils/helpers"
 
 
-let initialState = {
+const initialState = {
 	users: [] as UserType[],
 	totalCount: 0,
 	pageSize: 5,
@@ -15,7 +15,7 @@ let initialState = {
 	followingInProgress: [] as Array<number>,//arr user's ids
 }
 
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 type ActionsTypes = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsTypes>
 
