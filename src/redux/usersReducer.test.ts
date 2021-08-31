@@ -1,18 +1,9 @@
-import { InitialStateType } from './usersReducer';
+import { InitialStateType, actions, usersReducer } from './usersReducer';
 
-// let initialState = {
-// 	users: [] as UserType[],
-// 	totalCount: 0,
-// 	pageSize: 5,
-// 	currentPage: 1,
-// 	isFetching: true,
-// 	followingInProgress: [] as Array<number>,//arr user's ids
-// }
+let state: InitialStateType
 
-
-test('', () => {
-
-	const state: InitialStateType = {
+beforeEach(() => {
+	state = {
 		users: [
 			{
 				id: 0, name: "Van 0", followed: false,
@@ -23,7 +14,7 @@ test('', () => {
 				photos: { small: null, large: null }, status: "status 1"
 			},
 			{
-				id: 2, name: "Van 2", followed: false,
+				id: 2, name: "Van 2", followed: true,
 				photos: { small: null, large: null }, status: "status 2"
 			},
 			{
@@ -37,5 +28,24 @@ test('', () => {
 		isFetching: false,
 		followingInProgress: [],
 	}
+})
+
+test('follow success', () => {
+
+	const newState = usersReducer(state, actions.followSuccess(1))
+
+	expect(newState.users[0].followed).toBeFalsy()
+	expect(newState.users[1].followed).toBeTruthy()
+	expect(newState.users[2].followed).toBeTruthy()
+
+})
+
+test('unfollow success', () => {
+
+	const newState = usersReducer(state, actions.unfollowSuccess(1))
+
+	expect(newState.users[0].followed).toBeFalsy()
+	expect(newState.users[1].followed).toBeFalsy()
+	expect(newState.users[2].followed).toBeTruthy()
 
 })
