@@ -7,6 +7,15 @@ jest.mock('../api/usersAPI')
 
 const userAPIMock = usersAPI as jest.Mocked<typeof usersAPI>
 
+const dispatchMock = jest.fn()
+const getStateMock = jest.fn()
+
+beforeEach(() => {
+    dispatchMock.mockClear()
+    getStateMock.mockClear()
+    userAPIMock.follow.mockClear()
+    userAPIMock.unfollow.mockClear()
+})
 
 const result: APIResponseType = {
     resultCode: ResultCodesEnum.Success,
@@ -16,14 +25,10 @@ const result: APIResponseType = {
 
 
 userAPIMock.follow.mockReturnValue(Promise.resolve(result))
+userAPIMock.unfollow.mockReturnValue(Promise.resolve(result))
 
-test('thunk ', async () => {
+test('follow success thunk', async () => {
     const thunk = follow(1)
-
-    const dispatchMock = jest.fn()
-    const getStateMock = jest.fn()
-
-
 
     await thunk(dispatchMock, getStateMock, {})
 
