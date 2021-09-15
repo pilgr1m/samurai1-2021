@@ -1,10 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { UserType } from '../../redux/types'
+import { FilterType } from '../../redux/usersReducer'
 
 import url from '../images/photoUrl.webp'
 import style from './Users.module.css'
-
 
 type PropsType = {
 	user: UserType
@@ -14,7 +14,6 @@ type PropsType = {
 }
 
 const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow }) => {
-
 	return (
 		<div className={style.userWrapper}>
 			<span className={style.left}>
@@ -22,42 +21,43 @@ const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow
 					<NavLink to={`/profile/${user.id}`}>
 						<img
 							className={style.photo}
-							src={
-								(user.photos.small === null)
-									? url
-									: user.photos.small
-							}
-							alt="userPhoto"
+							src={user.photos.small === null ? url : user.photos.small}
+							alt='userPhoto'
 						/>
 					</NavLink>
 				</div>
 				<div>
-					{user.followed
-						? <button
-							disabled={followingInProgress.some(id => id === user.id)}
+					{user.followed ? (
+						<button
+							disabled={followingInProgress.some((id) => id === user.id)}
 							className={style.btnUsers}
 							onClick={() => unfollow(user.id)}>
-							Unfollow</button>
-
-						: <button
-							disabled={followingInProgress.some(id => id === user.id)}
+							Unfollow
+						</button>
+					) : (
+						<button
+							disabled={followingInProgress.some((id) => id === user.id)}
 							className={style.btnUsers}
 							onClick={() => follow(user.id)}>
-							Follow</button>
-					}
+							Follow
+						</button>
+					)}
 				</div>
 			</span>
 
 			<span className={style.right}>
 				<span>
 					<div>
-						<span className={style.spanLeft}>Name:</span> <span className={style.spanRight}>{user.name}</span>
+						<span className={style.spanLeft}>Name:</span>{' '}
+						<span className={style.spanRight}>{user.name}</span>
 					</div>
 					<div>
-						<span className={style.spanLeft}>Status:</span> <span className={style.spanRight}>{`${user.status}`}</span>
+						<span className={style.spanLeft}>Status:</span>{' '}
+						<span className={style.spanRight}>{`${user.status}`}</span>
 					</div>
 					<div>
-						<span className={style.spanLeft}>UserId:</span> <span className={style.spanRight}>{user.id}</span>
+						<span className={style.spanLeft}>UserId:</span>{' '}
+						<span className={style.spanRight}>{user.id}</span>
 					</div>
 				</span>
 			</span>
