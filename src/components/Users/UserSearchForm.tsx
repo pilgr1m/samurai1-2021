@@ -1,3 +1,4 @@
+import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import { FilterType } from '../../redux/usersReducer'
 
@@ -10,12 +11,13 @@ type PropsType = {
 	onFilterChange: (filter: FilterType) => void
 }
 
-export const UsersSearchForm: React.FC<PropsType> = ({ onFilterChange }) => {
+export const UsersSearchForm: React.FC<PropsType> = React.memo(({ onFilterChange }) => {
 	const submit = (
 		values: FilterType,
 		{ setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
 	) => {
 		onFilterChange(values)
+		setSubmitting(false)
 	}
 
 	return (
@@ -32,4 +34,4 @@ export const UsersSearchForm: React.FC<PropsType> = ({ onFilterChange }) => {
 			</Formik>
 		</>
 	)
-}
+})
