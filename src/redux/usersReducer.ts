@@ -15,6 +15,7 @@ const initialState = {
 	followingInProgress: [] as Array<number>, //arr user's ids
 	filter: {
 		term: '',
+		friend: null as null | boolean,
 	},
 }
 
@@ -85,7 +86,8 @@ export const actions = {
 		({ type: 'USER_REDUCER/SET_TOTAL_USERS', totalCount } as const),
 	setCurrentPage: (pageNumber: number) =>
 		({ type: 'USER_REDUCER/SET_CURRENT_PAGE', pageNumber } as const),
-	setFilter: (term: string) => ({ type: 'USER_REDUCER/SET_FILTER', payload: { term } } as const),
+	setFilter: (filter: FilterType) =>
+		({ type: 'USER_REDUCER/SET_FILTER', payload: filter } as const),
 	toggleIsFetching: (isFetching: boolean) =>
 		({ type: 'USER_REDUCER/TOGGLE_IS_FETCHING', isFetching } as const),
 	toggleFollowProgress: (isFetching: boolean, userId: number) =>
@@ -95,15 +97,15 @@ export const actions = {
 export const requestUsersThunk = (
 	currentPage: number,
 	pageSize: number,
-	term: string
+	filter: FilterType
 ): ThunkType => {
 	return async (dispatch, getState) => {
 		// let a = getState().app
 		dispatch(actions.toggleIsFetching(true))
 		dispatch(actions.setCurrentPage(currentPage))
-		dispatch(actions.setFilter(term))
+		dispatch(actions.setFilter(filter))
 
-		let response = await usersAPI.getUsers(currentPage, pageSize, term)
+		let response = await usersAPI.getUsers(currentPage, pageSize, filter.term, filter.friend)
 		dispatch(actions.toggleIsFetching(false))
 		dispatch(actions.setUsers(response.items))
 		dispatch(actions.setTotalUsers(response.totalCount))

@@ -26,7 +26,7 @@ type MapStatetoPropsType = {
 }
 
 type MapDispatchToPropsType = {
-	requestUsersThunk: (currentPage: number, pageSize: number, term: string) => void
+	requestUsersThunk: (currentPage: number, pageSize: number, filter: FilterType) => void
 	unfollow: (userId: number) => void
 	follow: (userId: number) => void
 }
@@ -39,8 +39,8 @@ type PropsType = MapStatetoPropsType & MapDispatchToPropsType & OwnPropsType
 
 class UsersContainer extends React.Component<PropsType> {
 	componentDidMount() {
-		const { currentPage, pageSize } = this.props
-		this.props.requestUsersThunk(currentPage, pageSize, '')
+		const { currentPage, pageSize, filter } = this.props
+		this.props.requestUsersThunk(currentPage, pageSize, filter)
 		//код ниже ушел в thunk(creator) в редюсере
 		// this.props.toggleIsFetching(true)
 		// usersAPI.getUsers(currentPage, pageSize).then(response => {
@@ -52,12 +52,12 @@ class UsersContainer extends React.Component<PropsType> {
 
 	onPageChange = (pageNumber: number) => {
 		// this.props.setCurrentPage(pageNumber)
-		this.props.requestUsersThunk(pageNumber, this.props.pageSize, this.props.filter.term)
+		this.props.requestUsersThunk(pageNumber, this.props.pageSize, this.props.filter)
 	}
 
 	onFilterChange = (filter: FilterType) => {
 		const { pageSize } = this.props
-		this.props.requestUsersThunk(1, pageSize, filter.term)
+		this.props.requestUsersThunk(1, pageSize, filter)
 	}
 
 	render() {
