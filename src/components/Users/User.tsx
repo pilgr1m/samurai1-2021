@@ -13,7 +13,7 @@ type PropsType = {
 	follow: (userId: number) => void
 }
 
-const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow }) => {
+export const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow }) => {
 	return (
 		<div className={style.userWrapper}>
 			<span className={style.left}>
@@ -64,4 +64,3 @@ const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow
 		</div>
 	)
 }
-export default User
