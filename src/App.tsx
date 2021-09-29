@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import HeaderContainer from './components/Header/HeaderContainer'
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom'
-import Login from './components/Login/Login'
+import { LoginPage } from './components/Login/Login'
 import Navbar from './components/Navbar/Navbar'
 import { UserPage } from './components/Users/UsersContainer'
 import { connect } from 'react-redux'
@@ -58,7 +58,7 @@ class App extends React.Component<PropsType & DispatchPropsType> {
 						</Route>
 
 						<Route exact path='/login'>
-							<Login />
+							<LoginPage />
 						</Route>
 
 						<Route path='*'>
