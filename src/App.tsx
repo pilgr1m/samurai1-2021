@@ -1,8 +1,6 @@
 import React, { Suspense } from 'react'
-import HeaderContainer from './components/Header/HeaderContainer'
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom'
 import { LoginPage } from './components/Login/Login'
-import Navbar from './components/Navbar/Navbar'
 import { UserPage } from './components/Users/UsersContainer'
 import { connect } from 'react-redux'
 import { initializeApp } from './redux/appReducer'
@@ -13,6 +11,7 @@ import { compose } from 'redux'
 import store, { AppStateType } from './redux/reduxStore'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
+import { Header } from './components/Header/Header'
 import withSuspense from './components/hoc/withSuspense'
 import 'antd/dist/antd.css'
 import { Link } from 'react-router-dom'
@@ -33,7 +32,7 @@ const SuspendedDialog = withSuspense(DialogsContainer)
 const SuspendedProfile = withSuspense(ProfileContainer)
 
 const { SubMenu } = Menu
-const { Header, Content, Footer, Sider } = Layout
+const { Content, Footer, Sider } = Layout
 
 class App extends React.Component<PropsType & DispatchPropsType> {
 	componentDidMount() {
@@ -45,24 +44,7 @@ class App extends React.Component<PropsType & DispatchPropsType> {
 		}
 		return (
 			<Layout>
-				<Header className='header'>
-					<div className='logo' />
-					<Row>
-						<Col span={20}>
-							<Menu theme='dark' mode='horizontal' defaultSelectedKeys={['2']}>
-								<Menu.Item key='1'>
-									<Link to='/developers'>Developers</Link>
-								</Menu.Item>
-							</Menu>
-						</Col>
-						<Col span={4}>
-							<Avatar
-								style={{ backgroundColor: '#87d068' }}
-								icon={<UserOutlined />}
-							/>
-						</Col>
-					</Row>
-				</Header>
+				<Header />
 				<Content style={{ padding: '0 50px' }}>
 					<Breadcrumb style={{ margin: '16px 0' }}>
 						<Breadcrumb.Item>Home</Breadcrumb.Item>
@@ -132,7 +114,7 @@ class App extends React.Component<PropsType & DispatchPropsType> {
 						</Content>
 					</Layout>
 				</Content>
-				<Footer style={{ textAlign: 'center' }}> Footer Ant Design ©2021 </Footer>
+				<Footer style={{ textAlign: 'center' }}> Footer Design ©2021 by Ivan V </Footer>
 			</Layout>
 			// <div className='app-wrapper'>
 			// 	<HeaderContainer />
